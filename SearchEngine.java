@@ -13,8 +13,7 @@ class Handler implements URLHandler {
             String[] parameters = url.getQuery().split("=");
             if (parameters[0].equals("s")) {
                 ArrayList<String> searchList = new ArrayList<>();
-                for(String str : stringList) searchList.add(str);
-                searchList.removeIf(s -> !s.contains(parameters[1]));
+                for(String str : stringList) if(str.contains(parameters[1]) )searchList.add(str);
                 return String.format("Results: " + String.join(", ", searchList));
             }
         }
